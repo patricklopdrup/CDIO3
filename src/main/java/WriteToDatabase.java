@@ -1,5 +1,4 @@
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import java.sql.Connection;
@@ -19,9 +18,11 @@ public class WriteToDatabase {
         }
     }
 
-    public void databaseConnectionTest(String category, String productName, double price, int amount, String date, String nameOfPurchaser) throws DALException {
+    public void databaseConnection(String category, String productName, double price,
+                                   int amount, String date, String nameOfPurchaser) throws DALException {
         try(Connection c = createConnection()) {
-            PreparedStatement prest = c.prepareStatement("insert into RegnskabsDatabase(Category, Productname, Price, Amount, DateOfPurchase, NameOfPurchaser) values(?,?,?,?,?,?)");
+            PreparedStatement prest = c.prepareStatement("insert into RegnskabsDatabase" +
+                    "(Category, Productname, Price, Amount, DateOfPurchase, NameOfPurchaser) values(?,?,?,?,?,?)");
             prest.setString(1, category);
             prest.setString(2, productName);
             prest.setDouble(3, price);
@@ -48,8 +49,8 @@ public class WriteToDatabase {
             e.printStackTrace();
         }
         try {
-            databaseConnectionTest(category, name, price, amount, date, nameOfPurchaser);
-            System.out.println("hej");
+            databaseConnection(category, name, price, amount, date, nameOfPurchaser);
+            //skriv success besked på hjemmeside
         } catch (DALException e) {
             throw new DALException(e.getMessage());
         }
@@ -59,7 +60,7 @@ public class WriteToDatabase {
         WriteToDatabase db = new WriteToDatabase();
 
         try {
-            db.databaseConnectionTest("hej", "sko", 5, 3, "111212", "athu");
+            db.databaseConnection("hej", "sko", 5, 3, "111212", "athu");
         } catch (DALException e) {
             e.printStackTrace();
         }
