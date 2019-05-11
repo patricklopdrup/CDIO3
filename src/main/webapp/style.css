@@ -1,0 +1,14 @@
+#mainform {
+    margin: auto;
+    width: 50%;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+#title {
+    text-align: center;
+    font-size: 40px;
+}

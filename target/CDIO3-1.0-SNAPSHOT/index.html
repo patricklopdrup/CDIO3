@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Regnskabs Program</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        function getValues() {
+            $("#text").html("Ingredient tilføjet");
+        }
+    </script>
+</head>
+
+<body>
+<h1 id="title">Regnskabs Program</h1>
+
+<div id="mainform">
+    <form action="/rest/regnskab" method="post" target="_self">
+
+        <label for="category">Kategori: </label><br>
+        <input id="category" type="text" name="category"> <br>
+
+        <label for="productName">Produkt navn: </label> <br>
+        <input id="productName" type="text" name="productName"> <br>
+
+        <label for="price">Pris (excl. moms): </label> <br>
+        <input id="price" type="number" name="price">
+
+        <label for="amount">Antal:</label>
+        <input id="amount" type="number" name="amount"> <br>
+
+        <label for="dateOfPurchase">Dato for køb: </label> <br>
+        <input id="dateOfPurchase" type="number" name="dateOfPurchase"> <br>
+
+        <label for="buyersName">Købers navn: </label> <br>
+        <input id="buyersName" type="text" name="buyersName"> <br>
+
+        <input type="submit" value="Indsend" onclick="getValues()">
+
+        <p id="text"></p>
+    </form>
+</div>
+
+</body>
+</html>
