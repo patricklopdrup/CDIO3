@@ -50,6 +50,7 @@ public class WriteToDatabase {
         }
         try {
             databaseConnection(category, name, price, amount, date, nameOfPurchaser);
+            System.out.println("added");
             //skriv success besked på hjemmeside
         } catch (DALException e) {
             throw new DALException(e.getMessage());
